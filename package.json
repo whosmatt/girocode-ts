@@ -1,0 +1,10 @@
+{
+    "name": "girocode-ts",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "tsc && cp src/index.html dist/ && cp -r src/css dist/"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0"
+    }
+}

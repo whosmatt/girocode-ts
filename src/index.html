@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPC QR Code Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>EPC QR Code Generator</h1>
+        <p class="subtitle">Generate QR codes for SEPA payments (GiroCode)</p>
+        
+        <form id="epcForm">
+            <div class="remember-section">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="remember-credentials">
+                    <span>Remember Name and IBAN</span>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Beneficiary Name *</label>
+                <input type="text" id="name" required maxlength="70" placeholder="e.g. Red Cross">
+            </div>
+
+            <div class="form-group">
+                <label for="iban">IBAN *</label>
+                <input type="text" id="iban" required maxlength="34" placeholder="e.g. BE72000000001616">
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount (EUR) *</label>
+                <input type="number" id="amount" required step="0.01" min="0.01" placeholder="e.g. 1.99">
+                <small>Amount in EUR</small>
+            </div>
+
+            <div class="form-group">
+                <label for="text">Payment Reference Text</label>
+                <input type="text" id="text" maxlength="140" placeholder="e.g. Urgency Fund">
+            </div>
+        </form>
+
+        <div id="qr-container">
+            <canvas id="qrcode"></canvas>
+            <button id="shareBtn" class="share-btn" disabled>Share QR Code</button>
+        </div>
+
+        <div id="error-message" class="error-message"></div>
+    </div>
+
+    <script src="lib/qrcodegen.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
