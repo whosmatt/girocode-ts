@@ -4,7 +4,12 @@ const urlsToCache = [
     '/index.html',
     '/css/style.css',
     '/app.js',
-    '/lib/qrcodegen.js'
+    '/lib/qrcodegen.js',
+    '/icons/32.png',
+    '/icons/180.png',
+    '/icons/192.png',
+    '/icons/512.png',
+    '/manifest.json'
 ];
 
 self.addEventListener('install', event => {
