@@ -2,7 +2,7 @@
     "name": "girocode-ts",
     "version": "1.0.0",
     "scripts": {
-        "build": "tsc && cp src/index.html dist/ && cp -r src/css dist/"
+        "build": "tsc && cp src/index.html dist/ && cp -r src/css dist/ && cp src/manifest.json dist/ && cp src/sw.js dist/"
     },
     "devDependencies": {
         "typescript": "^5.0.0"
