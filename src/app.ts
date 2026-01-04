@@ -212,17 +212,18 @@ class EPCQRGenerator {
                 }
             }
 
-            // Fallback: download the image
+            // Fallback: replace canvas with image element for right-click save/share
             const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'epc-qr-code.png';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            const img = document.createElement('img');
+            img.src = url;
+            img.id = 'qrcode';
+            img.style.border = '8px solid #f5f5f5';
+            img.style.borderRadius = '8px';
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+            img.style.display = 'inline-block';
             
-            this.showError('Shared/downloaded QR code image');
+            this.canvas.parentNode?.replaceChild(img, this.canvas);
         } catch (error) {
             if ((error as Error).name !== 'AbortError') {
                 this.showError('Failed to share: ' + (error as Error).message);
