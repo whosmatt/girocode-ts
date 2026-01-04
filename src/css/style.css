@@ -9,6 +9,7 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -153,6 +154,29 @@ h1 {
 
 .error-message.show {
     display: block;
+}
+
+footer {
+    margin-top: auto;
+    padding-top: 40px;
+    text-align: center;
+}
+
+footer a {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 0;
 }
 
 @media (max-width: 640px) {
