@@ -1,0 +1,47 @@
+name: Update Latest Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Create dist archive
+        run: cd dist && zip -r ../dist.zip . && cd ..
+
+      - name: Delete old latest release
+        continue-on-error: true
+        run: |
+          gh release delete latest --yes || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create new latest release
+        run: |
+          gh release create latest \
+            --title "Latest Build" \
+            --notes "Automatically built from: ${{ github.sha }}" \
+            dist.zip \
+            --prerelease
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
