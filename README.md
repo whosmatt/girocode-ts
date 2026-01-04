@@ -12,6 +12,7 @@ IBAN and Beneficiary can be remembered in localstorage for convenience.
 ## Build
 
 ```bash
+npm install
 npm run build
 ```
 
