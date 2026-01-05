@@ -1,6 +1,6 @@
 {
-    "name": "EPC-QR Generator",
-    "short_name": "QR Generator",
+    "name": "GiroCode Generator",
+    "short_name": "GiroCode",
     "description": "Generate QR codes for SEPA payments",
     "start_url": "/",
     "display": "standalone",
