@@ -48,33 +48,33 @@ h1 {
 .subtitle {
     color: #666;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 1em;
     font-size: 14px;
 }
 
 .remember-section {
-    margin-bottom: 24px;
+    margin-bottom: 0.6em;
     padding: 12px;
     background: #f8f9fa;
     border-radius: 8px;
 }
 
 .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 0.5em;
 }
 
 .form-group label {
     display: block;
     color: #333;
     font-weight: 500;
-    margin-bottom: 8px;
+    margin-bottom: 0.3em;
     font-size: 14px;
 }
 
 .form-group input[type="text"],
 .form-group input[type="number"] {
     width: 100%;
-    padding: 12px 16px;
+    padding: 0.6em 0.8em;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     font-size: 16px;
@@ -129,7 +129,6 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
 #qrcode {
@@ -187,7 +186,7 @@ footer {
 }
 
 footer a {
-    color: #667eea;
+    color: #99a8eb;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -195,7 +194,6 @@ footer a {
 }
 
 footer a:hover {
-    color: #764ba2;
     text-decoration: underline;
 }
 
