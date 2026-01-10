@@ -1,4 +1,3 @@
-const CACHE_NAME = 'v1';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -14,10 +13,11 @@ const urlsToCache = [
 
 self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open(CACHE_NAME)
+        caches.open('app')
             .then(cache => cache.addAll(urlsToCache))
             .catch(() => { })
     );
+    self.skipWaiting();
 });
 
 self.addEventListener('fetch', event => {
@@ -25,5 +25,25 @@ self.addEventListener('fetch', event => {
         caches.match(event.request)
             .then(response => response || fetch(event.request))
             .catch(() => { })
+    );
+});
+
+self.addEventListener('activate', event => {
+    self.clients.claim();
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(cacheNames.map(c => caches.delete(c)));
+        }).then(() => {
+            return caches.open('app').then(cache => {
+                return cache.addAll(urlsToCache);
+            });
+        }).then(() => {
+            // Notify all clients that cache refresh is complete
+            self.clients.matchAll().then(clients => {
+                clients.forEach(client => {
+                    client.postMessage({ type: 'SW_CACHE_UPDATED' });
+                });
+            });
+        })
     );
 });

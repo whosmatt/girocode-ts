@@ -40,6 +40,15 @@ class EPCQRGenerator {
             this.rememberCheckbox.checked = true;
         }
 
+        // Listen for service worker cache updates
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.addEventListener('message', (event) => {
+                if (event.data.type === 'SW_CACHE_UPDATED') {
+                    location.reload();
+                }
+            });
+        }
+
         // Add event listeners
         this.nameInput.addEventListener('input', () => this.handleInputChange());
         this.ibanInput.addEventListener('input', () => this.handleInputChange());
